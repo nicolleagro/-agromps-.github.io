@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados</title>
+</head>
+<body>
+
+  <!-- Seção de Resultados -->
+  <div id="resultados">
+    <h2>Resultados</h2>
+    <p>Hectares: <span id="resultadoHectares"></span></p>
+    <p>Metros Quadrados: <span id="resultadoMetrosQuadrados"></span></p>
+    <div>
+      <label for="areaIrrigada">Área Irrigada (m²):</label>
+      <input type="text" id="areaIrrigada">
+    </div>
+    <div>
+      <label for="evapotranspiracao">Evapotranspiração da Cultura (mm/dia): </label>
+      <input type="text" id="evapotranspiracao">
+      <a href="calculadora_evapotranspiracao.html">Calcular Evapotranspiração</a>
+    </div>
+    <div>
+      <label for="tempoIrrigacao">Tempo de Irrigação (horas):</label>
+      <input type="text" id="tempoIrrigacao">
+    </div>
+    <button onclick="calcularVazao()">Calcular Vazão</button>
+    <div id="resultadoVazao"></div>
+  </div>
+
+  <script>
+    // Extrair os parâmetros da URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var hectares = parseFloat(urlParams.get('hectares'));
+    var metrosQuadrados = parseFloat(urlParams.get('metrosQuadrados'));
+
+    // Exibir os resultados na página
+    document.getElementById('resultadoHectares').textContent = hectares.toFixed(4);
+    document.getElementById('resultadoMetrosQuadrados').textContent = metrosQuadrados.toFixed(2);
+
+    function calcularVazao() {
+      // Obter os valores dos campos de entrada
+      var areaIrrigada = parseFloat(document.getElementById('areaIrrigada').value);
+      var evapotranspiracao = parseFloat(document.getElementById('evapotranspiracao').value);
+      var tempoIrrigacao = parseFloat(document.getElementById('tempoIrrigacao').value);
+
+      // Fazer os cálculos e exibir o resultado
+      var evapotranspiracaoHora = evapotranspiracao / 24;
+      var vazao = areaIrrigada * evapotranspiracaoHora * tempoIrrigacao;
+      document.getElementById('resultadoVazao').textContent = 'Vazão Necessária: ' + vazao.toFixed(2) + ' L/h';
+    }
+  </script>
+
+</body>
+</html>

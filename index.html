@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title class="titulo">Mapa Interativo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+
+    #map {
+      height: 400px;
+      width: 98%;
+    }
+    #info {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #027e0c;
+    }
+    
+    #button {
+      margin-top: 10px;
+    }
+    body {
+            background-color:#5B702B
+        }
+
+   </style>
+</head>
+<body> 
+  <img src="imagemsuperior.jpg" alt=" imagemsuperior">
+  <div id="map"></div>
+
+  </div>
+  <div class="selecao"> 
+    Selecione o local para calcular os hectares e a  <span id="areaSelecionadaHectares"></span> hectares<br>
+    Área selecionada: <span id="areaSelecionadaMetrosQuadrados"></span> m²
+    <div class="botao" id="button">
+      <button id="verResultados">Ver Resultados</button>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
